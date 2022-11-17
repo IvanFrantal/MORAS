@@ -1,0 +1,11 @@
+CHIP dz1zad1 {
+
+	IN x, y;
+	OUT out;
+	
+	PARTS:
+	And(a = x, b = y, out = xAndY);
+	
+	Not(in = xAndY, out = out);
+	
+}
