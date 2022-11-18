@@ -4,6 +4,6 @@ CHIP BitShiftL {
 	OUT out[16];
 	
 	PARTS:
-	Or16(a[0] = in[0], a[1..15] = in[0..14], b = false, out = out);
+	Or16(a[0] = false, a[1..15] = in[0..14], b = false, out = out);
 	
 }
