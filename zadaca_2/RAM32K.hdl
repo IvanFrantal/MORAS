@@ -1,0 +1,20 @@
+CHIP RAM32K {
+
+	IN in[16], addr[15], load;
+	OUT out[16];
+	
+	PARTS:
+	// pomocu DMux-a se bira u koji RAM16K ce se upisivati ono sto proslijedimo
+	// a load nam odreduje hoce li se to nesto upisati ili ne u ram
+	
+	DMux(in = load, sel = addr[14], a = loadA, b = loadB);
+	
+
+	// tu je od 0..13 jer je 14 uzet za DMux koji odabire gdje sta ide
+	
+	RAM16K(in = in, load = loadA, address = addr[0..13], out = outA);
+	RAM16K(in = in, load = loadB, address = addr[0..13], out = outB);
+	
+	Mux16(a = outA, b = outB, sel = addr[14], out = out); 
+
+}
