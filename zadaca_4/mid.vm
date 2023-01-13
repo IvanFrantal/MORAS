@@ -1,0 +1,75 @@
+function mid.mid 3
+
+push constant 5
+pop local 0
+push constant 4
+pop local 1
+push constant 3
+pop local 2
+push local 0
+
+
+
+push local 1
+lt
+push local 1
+and
+push local 2
+lt
+push local 2
+
+push local 1
+lt
+push local 1
+and
+push local 0
+lt
+
+or
+
+
+
+if-goto IF_TRUE0
+goto IF_FALSE0
+
+label IF_TRUE0
+push local 1
+return
+
+label IF_FALSE0
+push local 1
+
+
+push local 0
+lt
+push local 0
+and
+push local 2
+lt
+push local 2
+
+push local 0
+lt
+push local 0
+and
+push local 1
+lt
+
+or
+
+
+
+if-goto IF_TRUE1
+goto IF_FALSE1
+
+label IF_TRUE1
+push local 0
+return
+
+goto IF_END1
+label IF_FALSE1
+
+
+push local 2
+return
+label IF_END1
