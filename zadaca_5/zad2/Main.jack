@@ -1,0 +1,106 @@
+class Main
+{
+	function void main()
+	{
+		var Vint A, B, C, D;
+		
+		let A = Vint.new(5);
+		let B = Vint.new(2);
+		let C = Vint.new(1);
+		let D = Vint.new(1);
+		
+		do Output.printString("Len proba  A: ");
+		do Output.printInt(A.len());
+		do Output.printString(" ,  B: ");
+		do Output.printInt(B.len());
+		do Output.println();
+		
+		do Output.printString("PrintVec proba: ");
+		do A.PrintVec();
+		do B.PrintVec();
+		do Output.println();
+		
+		do A.set(0,1);
+		do A.set(1,8);
+		do A.set(2,7);
+		do A.set(3,6);
+		do A.set(4,5);
+		do A.set(5,5);
+		
+		do B.set(0,40);
+		do B.set(1,3);
+		do B.set(2,67);
+		
+		do Output.printString("Set proba: ");
+		do A.PrintVec();
+		do B.PrintVec();
+		do Output.println();
+		
+		do Output.printString("Get proba: ");
+		do Output.printInt(A.get(6));
+		do Output.printInt(A.get(0));
+		do Output.printInt(B.get(6));
+		do Output.printInt(B.get(1));
+		do Output.println();
+		
+		do A.resize(2);
+		do Output.printString("Resize proba: ");
+		do A.PrintVec();
+		do Output.println();
+		
+		do Output.printString("Is_eq proba: ");
+		if (Vint.is_eq(A, B) = true)
+		{
+			do Output.printString("Jednaki su :)");
+			do Output.println();
+		}
+		else
+		{
+			do Output.printString("Nisu jednaki :/");
+			do Output.println();
+		}
+		
+		do Output.printString("Elems proba: ");
+		if (Vint.elems(A, B) = true)
+		{
+			do Output.printString("Elementi su jednaki :)");
+			do Output.println();
+		}
+		else
+		{
+			do Output.printString("Elementi nisu jednaki :/");
+			do Output.println();
+		}
+		
+		do Output.println();
+		
+		do C.set(0,1);
+		do D.set(0,1);
+		
+		do Output.printString("Is_eq proba na C i D: ");
+		if (Vint.is_eq(C, D) = true)
+		{
+			do Output.printString("Jednaki su :)");
+			do Output.println();
+		}
+		else
+		{
+			do Output.printString("Nisu jednaki :/");
+			do Output.println();
+		}
+		
+		do Output.printString("Elems proba na C i D: ");
+		if (Vint.elems(C, D) = true)
+		{
+			do Output.printString("Elementi su jednaki :)");
+			do Output.println();
+		}
+		else
+		{
+			do Output.printString("Elementi nisu jednaki :/");
+			do Output.println();
+		}
+
+        return;
+	}
+}

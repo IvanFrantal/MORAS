@@ -1,0 +1,191 @@
+class Vint
+{
+	field int capacity;
+	field Array vec;
+	
+
+	method int len()
+	{
+		return capacity;
+	}
+	
+	function int dvaNaN(int n)
+	{
+		var int ans, i;
+		
+		let ans = 1;
+		let i = 0;
+		
+		while (i < n)
+		{
+			let ans = ans * 2;
+			
+			let i = i + 1;
+		}
+		
+		return ans;
+	}
+	
+	constructor Vint new(int n)
+	{
+		if (n < 0)
+		{
+			let capacity = 1;
+			let vec = Array.new(1);
+			
+			return this;
+		}
+		
+		
+		let capacity = Vint.dvaNaN(n);
+		let vec = Array.new(Vint.dvaNaN(n));
+		
+		return this;
+	}
+	
+	method void set(int k, int v)
+	{
+		if ((k > -1) & (k < capacity))
+		{
+			let vec[k] = v;
+			
+			return;
+		}
+		
+		do Output.printString("Error: method SET / k is too small or too big");
+		do Output.println();
+		
+		return;
+	}
+	
+	method int get(int k)
+	{
+		if ((k > -1) & (k < capacity))
+		{
+			return vec[k];
+		}
+		
+		do Output.printString("Error: method GET / k is too small or too big");
+		do Output.println();
+		
+		return -1;
+	}
+	
+	method void resize(int m)
+	{
+		var int i, manji;
+		var Array tempArr;
+		
+		if (m < 0)
+		{
+			do vec.dispose();
+			
+			let capacity = 1;
+			let vec = Array.new(1);
+			
+			return;
+		}
+		
+		let tempArr = Array.new(Vint.dvaNaN(m));
+		let manji = Math.min(Vint.dvaNaN(m), capacity);
+		
+		let i = 0;
+		
+		while (i < manji)
+		{
+			let tempArr[i] = vec[i];
+			
+			let i = i + 1;
+		}
+		
+		do vec.dispose();
+		
+		let capacity = Vint.dvaNaN(m);
+		let vec = tempArr;
+		
+		return;
+	}
+
+	
+	function bool is_eq(Vint a, Vint b)
+	{
+		var int i;
+		let i = 0;
+		
+		
+		if(~(a.len() = b.len()))
+		{
+			return false;
+		}
+		
+		while (i < a.len())
+		{
+			if (~(a.get(i) = b.get(i)))
+			{
+				return false;
+			}
+			
+			let i = i + 1;
+		}
+		
+		return true;
+	}
+	
+	method Array VecToArr()
+	{
+		return vec;
+	}
+	
+	function bool elems(Vint a, Vint b)
+	{
+		var Array A, B;
+		var int i, lenA, lenB;
+		
+		let i = 0;
+		let lenA = a.len();
+		let lenB = b.len();
+		
+		
+		if(~(a.len() = b.len()))
+		{
+			return false;
+		}
+		
+		let A = a.VecToArr();
+		let B = b.VecToArr();
+		
+		do quickSort.quickSort(A, 0, lenA - 1);
+		do quickSort.quickSort(B, 0, lenB - 1);
+		
+		while (i < lenA)
+		{
+			if (~(A[i] = B[i]))
+			{
+				return false;
+			}
+			
+			let i = i + 1;
+		}
+		
+		return true;
+	}
+	
+	method void PrintVec()
+	{
+		var int i;
+		let i = 0;
+		
+		while (i < capacity)
+		{
+			do Output.printInt(vec[i]);
+			do Output.printString(" ");
+			
+			let i = i + 1;
+		}
+		
+		do Output.println();
+		
+		return;
+	}
+	
+}
