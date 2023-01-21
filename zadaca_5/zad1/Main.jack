@@ -1,0 +1,89 @@
+class Main
+{
+	function void swap (Array A, int i, int j)
+    {
+        var int temp;
+		
+        let temp = A[i];
+        let A[i] = A[j];
+        let A[j] = temp;
+		
+        return;
+    }
+
+    function int partition (Array A, int fst, int lst)
+    {
+        var int pivot, i, j;
+
+        let pivot = A[lst];
+        let i = fst - 1;
+        let j = fst;
+
+        while(j < lst)
+        {
+            if(A[j] < pivot)
+            {
+                let i = i + 1;
+                do Main.swap(A, i, j);
+            }
+
+            let j = j + 1;
+        }
+
+        do Main.swap(A, i + 1, lst);
+
+        return (i + 1);
+    }
+
+    function void quickSort (Array A, int fst, int lst)
+    {
+        var int p;
+
+        if (fst < lst)
+        {
+            let p = Main.partition(A, fst, lst);
+
+            do Main.quickSort(A, fst, p - 1);
+            do Main.quickSort(A, p + 1, lst);
+        }
+
+
+        return;
+    }
+	
+	function void main()
+	{
+		var Array A;
+        var int n, i, arrNum;
+        
+        let n = Keyboard.readInt("Unesite duljnu liste: ");
+        let A = Array.new(n);
+		do Output.println();
+        
+        let i = 0;
+        while (i < n)
+        {
+            let arrNum = Keyboard.readInt("Unesite broj: ");
+			do Output.println();
+			
+			let A[i] = arrNum;
+            let i = i + 1;
+        }
+
+        do Main.quickSort(A, 0, n - 1);
+        
+		let i = 0;
+		while (i < n)
+		{
+			do Output.printInt(A[i]);
+			do Output.printString(" ");
+			
+			let i = i + 1;
+		}
+		do Output.println();
+		
+
+        do A.dispose();
+        return;
+	}
+}
